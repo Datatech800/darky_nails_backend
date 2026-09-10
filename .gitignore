@@ -1,0 +1,14 @@
+# Configuración local con credenciales
+config.php
+
+# Fotos reales del negocio (se usan las de image_darky/ para el repo)
+IMAGES/
+
+# Sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
