@@ -1,0 +1,964 @@
+/* ═══════════════════════════════════════════════
+   css_beta_dashboard.css
+   Single-page dashboard – all sections in one file
+   ═══════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "Cinzel";
+  src: url("../Fonts/Cinzel/static/Cinzel-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ─── RESET ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Cinzel", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── TOP BAR ─── */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.logo {
+  font-family: "Cinzel", serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.logo .brand-nails {
+  color: #db1634;
+}
+
+.btn-logout {
+  font-family: "Cinzel", serif;
+  background: transparent;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 8px 22px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-logout:hover {
+  background: #333;
+  border-color: #888;
+  color: #fff;
+}
+
+/* ─── NAV PANEL ─── */
+.nav-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 20px;
+  background: rgba(10,10,10,0.85);
+  border-bottom: 1px solid #2a2a2a;
+  flex-wrap: wrap;
+}
+
+/* Buttons as nav items */
+.nav-panel-item {
+  font-family: "Cinzel", serif;
+  color: #aaa;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 0;
+  transition: 0.2s;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-panel-item:hover {
+  color: #fff;
+}
+
+.nav-panel-item.active {
+  color: #fff;
+  border-bottom-color: #db1634;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+/* ─── SECCIONES (show/hide) ─── */
+.seccion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── CALENDAR (Turnos) ─── */
+.calendar-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #3a3a3a;
+}
+
+/* FullCalendar v7 monarch theme – dark override */
+.calendar-wrapper {
+  --fc-monarch-primary: #777;
+  --fc-monarch-primary-foreground: #fff;
+  --fc-monarch-primary-over: #888;
+  --fc-monarch-primary-down: #999;
+  --fc-monarch-secondary: #3a3a3a;
+  --fc-monarch-secondary-foreground: #ccc;
+  --fc-monarch-secondary-over: #444;
+  --fc-monarch-secondary-down: #4a4a4a;
+  --fc-monarch-highlight: #8888884D;
+  --fc-monarch-selected: #555;
+  --fc-monarch-selected-foreground: #fff;
+  --fc-monarch-selected-over: #666;
+  --fc-monarch-selected-down: #777;
+  --fc-monarch-background: #2a2a2a;
+  --fc-monarch-faint: #8888881A;
+  --fc-monarch-muted: #88888826;
+  --fc-monarch-strong: #8888884D;
+  --fc-monarch-stronger: #88888859;
+  --fc-monarch-strongest: #88888866;
+  --fc-monarch-foreground: #e0e0e0;
+  --fc-monarch-faint-foreground: #666;
+  --fc-monarch-muted-foreground: #999;
+  --fc-monarch-border: #444;
+  --fc-monarch-strong-border: #555;
+}
+
+/* ── CONTADOR DE TURNOS (vista MES, +N) ── */
+.contador-turnos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 28px;
+  padding: 8px 0;
+  margin: 2px 0;
+  font-size: 17px;
+  font-weight: bold;
+  color: #db1634 !important;
+}
+
+/* ── FECHA VISIBLE EN EL MODAL NUEVO TURNO ── */
+.modal-fecha-turno {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  color: #fff;
+  background: rgba(219, 22, 52, 0.15);
+  border: 1px solid #db1634;
+  border-radius: 6px;
+  padding: 8px 12px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.servicios-mensaje.error {
+  color: #ff6b6b;
+}
+
+/* ─── CLIENTES – Search ─── */
+.search-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.search-label {
+  font-family: "Cinzel", serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #aaa;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #e0e0e0;
+  outline: none;
+  transition: 0.2s;
+}
+
+.search-input::placeholder {
+  color: #666;
+}
+
+.search-input:focus {
+  border-color: #777;
+  background: #333;
+}
+
+/* ─── CLIENTES – Panel ─── */
+.clientes-panel {
+  width: 100%;
+  max-width: 800px;
+}
+
+.clientes-mensaje {
+  font-size: 13px;
+  color: #aaa;
+  text-align: center;
+  margin: 8px 0;
+  min-height: 18px;
+}
+
+.clientes-mensaje.error {
+  color: #db1634;
+}
+
+/* ─── Clientes pendientes de aprobación ─── */
+.pendientes-panel {
+  margin-bottom: 28px;
+  padding: 18px;
+  background: #202020;
+  border: 2px solid #3f3f3f;
+  border-radius: 10px;
+}
+
+.pendientes-titulo {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e0e0e0;
+  margin: 0 0 10px;
+}
+
+.pendientes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pendiente-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.pendiente-info {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.pendiente-detalle {
+  color: #999;
+  font-size: 13px;
+}
+
+.pendiente-fecha {
+  color: #666;
+}
+
+.pendiente-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-pendiente {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.btn-pendiente.aprobar {
+  background: #2f9e44;
+}
+
+.btn-pendiente.aprobar:hover {
+  background: #267d37;
+}
+
+.btn-pendiente.rechazar {
+  background: #db1634;
+}
+
+.btn-pendiente.rechazar:hover {
+  background: #b0102a;
+}
+
+.tabla-clientes td:last-child {
+  text-align: left;
+}
+
+.tabla-clientes td:first-child {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.tabla-clientes {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabla-clientes th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tabla-clientes td {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.clientes-form {
+  margin-top: 40px;
+  background: #242424;
+  border: 2px solid #3f3f3f;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.45);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.clientes-form h3 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e0e0e0;
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.clientes-form .input-group {
+  margin-bottom: 18px;
+}
+
+.clientes-form .input-group label {
+  display: block;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.clientes-form .input-group input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #e0e0e0;
+  outline: none;
+  transition: 0.2s;
+}
+
+.clientes-form .input-group input:focus {
+  border-color: #db1634;
+}
+
+.clientes-form button {
+  width: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #db1634;
+  border: 1px solid #db1634;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.clientes-form button:hover {
+  background: #b0102a;
+  border-color: #b0102a;
+}
+
+.form-mensaje {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 13px;
+  min-height: 18px;
+}
+
+.form-mensaje.ok {
+  color: #7fc97f;
+}
+
+.form-mensaje.error {
+  color: #db1634;
+}
+
+/* ─── MULTIMEDIA – Cards ─── */
+.cards-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 260px;
+  height: 180px;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: 0.25s;
+  cursor: default;
+}
+
+.card:hover {
+  border-color: #555;
+  background: #333;
+}
+
+.card-subtitle {
+  font-size: 15px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ─── SERVICIOS Y PRECIOS ─── */
+.action-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn-action {
+  font-family: "Cinzel", serif;
+  background: transparent;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-action:hover {
+  background: rgba(219, 22, 52, 0.15);
+  border-color: #db1634;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(219, 22, 52, 0.35);
+}
+
+.btn-action:active {
+  transform: scale(0.97);
+}
+
+.servicios-panel {
+  width: 100%;
+  max-width: 760px;
+}
+
+.servicios-mensaje {
+  font-size: 13px;
+  color: #aaa;
+  text-align: center;
+  margin: 0 0 16px;
+  min-height: 18px;
+}
+
+.servicios-mensaje.error {
+  color: #db1634;
+}
+
+.servicios-mensaje.ok {
+  color: #7fc97f;
+}
+
+.cuadro-servicios {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ─── MODAL AGREGAR SERVICIO ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  background: #1d1d1d;
+  border: 2px solid #3f3f3f;
+  border-radius: 14px;
+  padding: 28px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+.modal-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+}
+
+.modal-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.modal-campo label {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 13px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  color: #e0e0e0;
+  background: #141414;
+  border: 1px solid #3f3f3f;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: #db1634;
+}
+
+.modal-fila {
+  display: flex;
+  gap: 14px;
+}
+
+.modal-fila .modal-campo {
+  flex: 1;
+}
+
+.modal-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.btn-modal-cerrar {
+  font-family: "Cinzel", serif;
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-modal-cerrar:hover {
+  border-color: #888;
+  color: #fff;
+}
+
+@media (max-width: 550px) {
+  .modal {
+    padding: 20px;
+  }
+
+  .modal-fila {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+
+.servicio-categoria {
+  background: #242424;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+
+.servicio-categoria.abierto {
+  border-color: #555;
+}
+
+.servicio-categoria-titulo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: none;
+  color: #e0e0e0;
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.servicio-categoria-titulo:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.servicio-categoria-flecha {
+  color: #db1634;
+  font-size: 18px;
+  transition: transform 0.25s;
+}
+
+.servicio-categoria.abierto .servicio-categoria-flecha {
+  transform: rotate(180deg);
+}
+
+.servicio-categoria-cuerpo {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.servicio-categoria.abierto .servicio-categoria-cuerpo {
+  max-height: 700px;
+}
+
+.tabla-servicios td:first-child {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.celda-precio {
+  color: #e0e0e0 !important;
+}
+
+/* La tabla de detalle de cada servicio usa una font legible
+   (los títulos del acordeón y los botones siguen en Cinzel) */
+.tabla-servicios {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.tabla-servicios th,
+.tabla-servicios td {
+  font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+.precio-input:focus {
+  border-color: #db1634;
+}
+
+.precio-input,
+.duracion-input {
+  width: 110px;
+  background: #1a1a1a;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  color: #e0e0e0;
+  outline: none;
+}
+
+.duracion-input {
+  width: 80px;
+}
+
+.precio-input:focus,
+.duracion-input:focus {
+  border-color: #db1634;
+}
+
+.btn-accion-fila {
+  font-family: "Cinzel", serif;
+  background: transparent;
+  border: 1px solid #555;
+  color: #ccc;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: 6px;
+}
+
+.btn-editar {
+  border-color: #6a8bb8;
+  color: #cfe0f5;
+}
+
+.btn-editar:hover {
+  background: rgba(106, 139, 184, 0.2);
+  border-color: #8fb4e0;
+  color: #fff;
+}
+
+.btn-editar:active {
+  transform: scale(0.95);
+}
+
+.btn-guardar {
+  border-color: #db1634;
+  color: #fff;
+  background: rgba(219, 22, 52, 0.2);
+}
+
+.btn-guardar:hover {
+  background: #db1634;
+  border-color: #db1634;
+  box-shadow: 0 0 8px rgba(219, 22, 52, 0.4);
+}
+
+.btn-guardar:active {
+  transform: scale(0.95);
+}
+
+.btn-guardar:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-cancelar {
+  border-color: #b06060;
+  color: #e6bcbc;
+}
+
+.btn-cancelar:hover {
+  background: rgba(176, 96, 96, 0.22);
+  border-color: #d08080;
+  color: #fff;
+}
+
+.btn-cancelar:active {
+  transform: scale(0.95);
+}
+
+.celda-accion {
+  text-align: right;
+}
+
+.celda-accion-th {
+  width: 170px;
+}
+
+.table-wrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #aaa;
+  text-align: left;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid #3a3a3a;
+  font-weight: normal;
+}
+
+td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #333;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td:first-child {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td:last-child {
+  text-align: right;
+  color: #aaa;
+}
+
+tr:hover td {
+  background: rgba(255,255,255,0.03);
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .nav-panel {
+    gap: 16px;
+    padding: 10px 16px;
+  }
+
+  .nav-panel-item {
+    font-size: 14px;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+
+  .calendar-wrapper {
+    padding: 10px;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 260px;
+    font-size: 16px;
+  }
+
+  .table-wrapper {
+    max-width: 92%;
+    overflow-x: auto;
+  }
+
+  .cards-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 300px;
+    height: 150px;
+  }
+
+  .action-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-action {
+    text-align: center;
+  }
+
+  th, td {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 550px) {
+  .calendar-wrapper {
+    max-width: 100%;
+    padding: 10px;
+  }
+}

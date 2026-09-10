@@ -1,0 +1,1727 @@
+﻿/* ============================================================
+   DARKY NAILS — HOJA DE ESTILOS ÚNICA
+   ============================================================ */
+
+/* ============================================================
+   1. FUENTES
+   ============================================================ */
+@font-face {
+  font-family: "Cinzel";
+  src: url("../Fonts/Cinzel/static/Cinzel-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ============================================================
+   2. RESET Y BASE
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: #0a0a0a;
+}
+
+body {
+  font-family: "Cinzel", serif;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* Fondo fijo en capa compuesta: mantiene el look sin repintar en cada scroll */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.7)), url("../image_darky/background_body.webp") center/cover no-repeat;
+}
+
+/* ============================================================
+   3. HEADER / NAV
+   ============================================================ */
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 18px 40px;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid #2a2a2a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-bar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-logo span {
+  font-family: "Cinzel", serif;
+  font-size: 25px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.nav-logo .brand-nails {
+  color: #db1634;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+}
+
+.nav-links li + li::before {
+  content: "|";
+  font-family: "Cinzel", serif;
+  color: #555;
+  margin: 0 16px;
+}
+
+.nav-links a {
+  font-family: "Cinzel", serif;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-btn {
+  font-family: "Cinzel", serif;
+  background: #db1634;
+  border: 1px solid #db1634;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.nav-btn:hover {
+  background: #b0102a;
+  border-color: #b0102a;
+}
+
+/* ============================================================
+   4. HAMBURGUESA (solo responsive) + MENÚ OVERLAY
+   ============================================================ */
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1001;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 10, 10, 0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-overlay-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+}
+
+.menu-overlay-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.menu-overlay-close:hover {
+  color: #db1634;
+}
+
+.menu-overlay-title {
+  font-family: "Cinzel", serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.menu-overlay-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.menu-overlay-links a {
+  font-family: "Cinzel", serif;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.2s;
+}
+
+.menu-overlay-links a:hover {
+  color: #db1634;
+}
+
+.menu-overlay-btn {
+  margin-top: 40px;
+  font-size: 16px;
+  padding: 14px 36px;
+}
+
+/* Botón "Reservar Ahora" mobile (header) */
+.nav-btn-abajo {
+  font-family: "Cinzel", serif;
+  display: none;
+  width: fit-content;
+  margin: 12px auto;
+  text-align: center;
+  background: #db1634;
+  border: 1px solid #db1634;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(219, 22, 52, 0.4);
+  transition: box-shadow 0.8s ease, border-color 0.8s ease, transform 0.8s ease, margin 0.8s ease;
+}
+
+.nav-btn-abajo:hover {
+  background: #b0102a;
+  border-color: #b0102a;
+}
+
+.nav-btn-abajo.scrolled {
+  border-color: #e60000;
+  box-shadow: 0 0 12px rgba(230, 0, 0, 0.8), 0 0 24px rgba(230, 0, 0, 0.4), 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Botón "Crear Cuenta" (desktop): gris, junto al botón rojo */
+.nav-btn-cuenta {
+  font-size: 13px;
+  padding: 8px 16px;
+  background: #555557;
+  border-color: #555557;
+}
+
+.nav-btn-cuenta:hover {
+  background: #404042;
+  border-color: #404042;
+}
+
+/* Contenedor de los botones flotantes (solo mobile) */
+.nav-btn-flotantes {
+  display: none;
+}
+
+/* Botón "Crear Cuenta" flotante (mobile): mismo gris que el desktop */
+.nav-btn-flotantes #abre-registro-mobile,
+#abre-registro-mobile.nav-btn-abajo {
+  background: #555557;
+  border-color: #555557;
+}
+
+.nav-btn-flotantes #abre-registro-mobile:hover,
+#abre-registro-mobile.nav-btn-abajo:hover {
+  background: #404042;
+  border-color: #404042;
+}
+
+.nav-btn-flotantes #abre-registro-mobile.scrolled,
+#abre-registro-mobile.nav-btn-abajo.scrolled {
+  border-color: #999;
+  box-shadow: 0 0 12px rgba(160, 160, 160, 0.8), 0 0 24px rgba(160, 160, 160, 0.4), 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Contenedor de botones del header desktop */
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 20px;
+}
+
+/* ============================================================
+   5. HERO — VERSIÓN CLÁSICA
+   (definiciones base; el carrusel activo las sobrescribe abajo)
+   ============================================================ */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px 60px;
+  gap: 60px;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.7)), url("../image_darky/background_body.webp") center/cover no-repeat;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 70px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  line-height: 1.2;
+}
+
+.hero-left h1 .highlight {
+  color: #db1634;
+}
+
+.hero-left .sub {
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  color: #aaa;
+  margin: 16px 0 30px;
+  letter-spacing: 0.5px;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: #db1634;
+  border: 1px solid #db1634;
+  color: #fff;
+  padding: 14px 42px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #b0102a;
+  border-color: #b0102a;
+}
+
+.hero-right {
+  flex: 1;
+  text-align: center;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+.bat-divider {
+  text-align: center;
+  font-size: 36px;
+  color: #555;
+  margin-top: 20px;
+  letter-spacing: 12px;
+}
+
+/* ============================================================
+   6. HERO — CARRUSEL DE IMÁGENES (versión activa)
+   ============================================================ */
+.hero::before {
+  display: none;
+}
+
+.hero {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero-slides-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  transition: transform 0.8s ease;
+}
+
+.hero-slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slide-2 { justify-content: flex-start; }
+.hero-slide-2 .hero-slide-content { text-align: left; padding-left: 10%; }
+
+.hero-slide-3 { justify-content: flex-end; }
+.hero-slide-3 .hero-slide-content { text-align: right; padding-right: 10%; }
+
+.hero-slide-fondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-slide-1 .hero-slide-fondo { background-image: url("../image_darky/fondo_1.webp"); }
+.hero-slide-2 .hero-slide-fondo { background-image: url("../image_darky/fondo_2.webp"); }
+.hero-slide-3 .hero-slide-fondo { background-image: url("../image_darky/fondo_3.webp"); }
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.7);
+}
+
+.hero-slide-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-slide-content h1 {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  font-size: 70px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  line-height: 1.2;
+}
+
+.hero-slide-content h1 .highlight {
+  color: #db1634;
+}
+
+.hero-slide-content .sub {
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  color: #aaa;
+  margin: 16px 0 30px;
+  letter-spacing: 0.5px;
+}
+
+/* Flechas del carrusel */
+.hero-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 12px;
+  line-height: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.hero-flecha svg {
+  width: 34px;
+  height: 34px;
+}
+
+.hero-flecha:hover {
+  color: #db1634;
+  transform: translateY(-50%) scale(1.18);
+}
+
+.hero-flecha:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.hero-flecha-prev { left: 12px; }
+.hero-flecha-next { right: 12px; }
+
+/* Puntos indicadores del carrusel */
+.hero-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+.hero-dot {
+  width: 32px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.2s;
+}
+
+.hero-dot.activo {
+  background: #db1634;
+  transform: scaleY(1.4);
+}
+
+@media (max-width: 768px) {
+  .hero { min-height: 80vh; }
+  .hero-slide-content h1 { font-size: 30px; }
+  .hero-slide-content .sub { font-size: 15px; }
+  .hero-flecha { padding: 8px; }
+  .hero-flecha svg { width: 26px; height: 26px; }
+  .hero-flecha-prev { left: 8px; }
+  .hero-flecha-next { right: 8px; }
+  .hero-slide-2 .hero-slide-content { padding-left: 6%; }
+  .hero-slide-3 .hero-slide-content { padding-right: 6%; }
+}
+
+/* ============================================================
+   7. SERVICIOS
+   ============================================================ */
+.services-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.services-section h2 {
+  font-family: "Cinzel", serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #ccc;
+  margin-bottom: 50px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.service-item {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 30px 20px;
+  transition: border-color 0.3s;
+}
+
+.service-item:hover {
+  border-color: #666;
+}
+
+.service-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  background: #1a1a1a;
+}
+
+.service-item h3 {
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ddd;
+  margin-bottom: 8px;
+}
+
+.service-item p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   8. MARQUESINA DE MARCAS
+   ============================================================ */
+.brands-marquee {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.brands-track {
+  display: flex;
+  width: max-content;
+  animation: scrollBrands 40s linear infinite;
+  will-change: transform;
+}
+
+.brands-track img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  padding-right: 50px;
+}
+
+@keyframes scrollBrands {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   9. CTA + FORMULARIO DE SUSCRIPCIÓN
+   ============================================================ */
+.cta-section {
+  display: flex;
+  align-items: stretch;
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+}
+
+.cta-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta-left h2 {
+  font-family: "Cinzel", serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ccc;
+}
+
+.cta-left .sub {
+  font-size: 16px;
+  color: #888;
+  margin: 10px 0 28px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: #db1634;
+  border: 1px solid #db1634;
+  color: #fff;
+  padding: 14px 44px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background: #b0102a;
+  border-color: #b0102a;
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 50px;
+}
+
+.cta-grid img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #1a1a1a;
+}
+
+.cta-right {
+  flex: 1;
+}
+
+.form-dark {
+  background: #0d0d0d;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+  border: 1px solid #222;
+}
+
+.form-dark h3 {
+  font-family: "Cinzel", serif;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.form-dark .benefits {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group label {
+  font-family: "Cinzel", serif;
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  background: #0d0d0d;
+  padding: 0 5px;
+  color: #e60000;
+}
+
+.input-group input:focus {
+  border-color: #e60000;
+  box-shadow: 0 0 8px rgba(230, 0, 0, 0.5);
+}
+
+.form-dark button {
+  width: 100%;
+  padding: 14px;
+  background: #db1634;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 1px;
+  font-family: "Cinzel", serif;
+  text-transform: uppercase;
+}
+
+.form-dark button:hover {
+  background: #b0102a;
+  box-shadow: 0 0 15px rgba(219, 22, 52, 0.6);
+}
+
+.letras-form {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+/* ============================================================
+   10. SECCIÓN CONTACTO (vení a visitarnos + redes)
+   ============================================================ */
+.contacto-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: stretch;
+  flex: 1;
+}
+
+.contacto-row .form-dark {
+  flex: 1;
+  min-width: 260px;
+}
+
+.contacto-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.contacto-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 28px;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* Recuadro "Vení a visitarnos" */
+.visitarnos-card {
+  background: #0d0d0d;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+  border: 1px solid #222;
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contacto-sub {
+  font-family: "Cinzel", serif;
+  font-size: 20px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.contacto-text {
+  font-size: 20px;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.contacto-text a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.contacto-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+  font-size: 14px;
+}
+
+.contacto-closed {
+  color: #666;
+}
+
+/* Recuadro "Nuestras redes" */
+.redes-card {
+  background: #0d0d0d;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+  border: 1px solid #222;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.redes-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.red-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #222;
+  border: 1px solid #3a3a3a;
+  color: #e0e0e0;
+  font-size: 24px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.red-ico:hover {
+  background: #333;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ============================================================
+   11. MAPAS
+   ============================================================ */
+.map-box {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #222;
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+}
+
+.map-desktop {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+}
+
+.map-desktop iframe {
+  border: 0;
+  flex: 1;
+  min-height: 280px;
+}
+
+.map-mobile {
+  margin-bottom: 24px;
+}
+
+.map-mobile iframe {
+  border: 0;
+  display: block;
+}
+
+/* ============================================================
+   12. MODALES DE SERVICIOS (glassmorphism)
+   ============================================================ */
+.servicio-abre {
+  cursor: pointer;
+}
+
+.modal-glass {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal-glass.abierto {
+  display: flex;
+}
+
+.modal-glass-box {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  padding: 34px 28px 28px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  color: #eee;
+}
+
+.modal-glass-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: #bbb;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.modal-glass-close:hover {
+  color: #fff;
+}
+
+.modal-glass-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.modal-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-lista li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.servicio-nombre {
+  flex: 1;
+  font-size: 15px;
+  color: #eee;
+}
+
+.servicio-nombre small {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.servicio-precio {
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.servicio-duracion {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+.modal-incluye {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.modal-incluye-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.modal-incluye ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-incluye li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.modal-incluye li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #db1634;
+}
+
+.modal-nota {
+  margin-top: 12px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ddd;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid #db1634;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   13. MODAL "RESERVAR AHORA"
+   ============================================================ */
+.modal-reservar-sub {
+  text-align: center;
+  color: #bbb;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.modal-reservar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reservar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  color: #eee;
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.reservar-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.reservar-nombre {
+  flex: 1;
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.reservar-precio {
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.reservar-flecha {
+  font-size: 22px;
+  color: #db1634;
+  line-height: 1;
+}
+
+/* ============================================================
+   14. WHATSAPP FLOTANTE
+   ============================================================ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 150px;
+  height: 60px;
+  animation: slideInRight 0.6s ease-out;
+  transition: transform 0.3s ease;
+  background: url("../image_darky/logo_wpp.png") center/contain no-repeat;
+  border-radius: 10px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* Variante compacta del botón de WhatsApp */
+.whatsapp-float {
+  background: url("../image_darky/logo_wpp.png") right/contain no-repeat;
+  right: 4px;
+  width: 120px;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================================
+   15. FOOTER
+   ============================================================ */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 12px;
+  color: #555;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* ============================================================
+   16. RESPONSIVE GENERAL
+   ============================================================ */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 20px;
+    gap: 12px;
+    transition: all 0.8s ease;
+  }
+
+  .nav-bar-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: opacity 0.8s ease, max-height 0.8s ease, padding 0.8s ease, margin 0.8s ease;
+    max-height: 300px;
+    overflow: visible;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-btn-abajo {
+    display: block;
+    position: sticky;
+    top: 12px;
+    z-index: 1000;
+  }
+
+  .nav-btn-flotantes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px auto 0;
+    position: sticky;
+    top: 12px;
+    z-index: 1000;
+  }
+
+  .nav-btn-flotantes .nav-btn-abajo {
+    margin: 0;
+    position: static;
+    z-index: auto;
+  }
+
+  .nav-links li + li::before {
+    content: "|";
+    font-family: "Cinzel", serif;
+    color: #555;
+    margin: 0 12px;
+  }
+
+  .nav-links li:nth-child(4)::before {
+    color: transparent;
+  }
+
+  .nav-links a {
+    font-size: 20px;
+  }
+
+  .nav-btn {
+    font-size: 20px;
+    padding: 8px 20px;
+    transition: box-shadow 0.8s ease, border-color 0.8s ease;
+  }
+
+  .nav-logo,
+  .nav-links,
+  .nav-hamburger {
+    transition: opacity 0.8s ease, max-height 0.8s ease, padding 0.8s ease, margin 0.8s ease;
+    max-height: 300px;
+    overflow: visible;
+  }
+
+  .nav-bar.scrolled {
+    padding: 8px 16px;
+    gap: 0;
+    background: transparent;
+    border-bottom: none;
+  }
+
+  .nav-bar.scrolled .nav-bar-top {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .nav-bar.scrolled .nav-btn {
+    border-color: #e60000;
+    box-shadow: 0 0 12px rgba(230, 0, 0, 0.8), 0 0 24px rgba(230, 0, 0, 0.4);
+    margin: 0;
+  }
+
+  .hero {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 40px;
+  }
+
+  .hero-left h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .hero-left .sub {
+    text-align: center;
+  }
+
+  .hero-left {
+    text-align: center;
+  }
+
+  .hero-btn,
+  .cta-btn {
+    display: none;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section {
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+
+  .cta-right {
+    width: 100%;
+  }
+}
+
+/* Modal responsive */
+@media (max-width: 480px) {
+  .modal-glass {
+    padding: 12px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .modal-glass-box {
+    max-width: 100%;
+    padding: 26px 18px 22px;
+    border-radius: 14px;
+  }
+
+  .modal-glass-titulo {
+    font-size: 22px;
+  }
+
+  .modal-lista li {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .servicio-precio {
+    margin-left: auto;
+  }
+}
+
+/* ============================================================
+   17. MODAL CREAR CUENTA (registro de clientes)
+   ============================================================ */
+.modal-glass-box-registro {
+  max-width: 460px;
+}
+
+.modal-registro-sub {
+  color: #bbb;
+  font-size: 13px;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.registro-mensaje {
+  min-height: 20px;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.registro-mensaje.error {
+  color: #ff6b6b;
+}
+
+.registro-mensaje.ok {
+  color: #6bff9e;
+}
+
+/* ============================================================
+   18. MODAL LOGIN CLIENTE + CALENDARIO DE TURNOS
+   ============================================================ */
+.modal-login-info {
+  color: #bbb;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.modal-login-link {
+  color: #db1634;
+  text-decoration: none;
+}
+
+.modal-login-link:hover {
+  text-decoration: underline;
+}
+
+.modal-glass-box-turnos {
+  max-width: 640px;
+}
+
+/* ── Tabla semanal de turnos (heredada de test_turnos, oscura) ── */
+.calendario-turnos {
+  margin-top: 8px;
+}
+
+.barra-semana {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto 8px;
+  flex-wrap: wrap;
+}
+
+.titulos-semana {
+  text-align: center;
+}
+
+.tp-titulo {
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.tp-subtitulo {
+  color: #999;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.tp-hoy-wrap {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.btn-nav {
+  font-family: "Cinzel", serif;
+  font-size: 14px;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.btn-nav-dark {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.btn-nav-dark:hover {
+  border-color: #db1634;
+  color: #fff;
+}
+
+.tp-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tp-tabla th,
+.tp-tabla td {
+  padding: 8px 10px;
+  border: 1px solid #333;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  color: #ddd;
+}
+
+.tp-tabla th {
+  font-family: "Cinzel", serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #bbb;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tp-tabla td:first-child {
+  text-transform: none;
+}
+
+.hora {
+  display: inline-block;
+  padding: 4px 6px;
+  margin: 2px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  font-size: 12px;
+  min-width: 46px;
+  color: #ccc;
+}
+
+.hora.ocupado {
+  background: rgba(219, 22, 52, 0.2);
+  color: #777;
+  border-color: #a00;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.hora.disponible {
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  color: #fff;
+}
+
+.hora.disponible:hover {
+  background: #db1634;
+  border-color: #db1634;
+}
+
+/* ── Resumen del turno a confirmar ── */
+.turno-resumen {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.turno-resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #bbb;
+  padding: 4px 0;
+}
+
+.turno-resumen-fila span {
+  color: #777;
+}
+
+.turno-resumen-fila strong {
+  color: #fff;
+  text-align: right;
+}
+
+.turno-confirmar-btn {
+  width: 100%;
+  padding: 14px;
+  background: #db1634;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.turno-confirmar-btn:hover {
+  background: #b00f28;
+}
+
+.modal-glass-select {
+  width: 100%;
+  padding: 12px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.modal-glass-select:focus {
+  border-color: #db1634;
+}
+
+/* Botón "Reservar este servicio" (modales de detalle) */
+.servicio-reservar-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  background: #db1634;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.servicio-reservar-btn:hover {
+  background: #b00f28;
+}
+
+.modal-glass-box-registro form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-glass-box-registro .input-group {
+  margin-bottom: 0;
+}
+
+.modal-glass-box-registro button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: #db1634;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Cinzel", serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.25s;
+  margin-top: 6px;
+}
+
+.modal-glass-box-registro button[type="submit"]:hover {
+  background: #b00f28;
+}
+
+/* Honeypot anti-bots: invisible para humanos, visible para bots */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

@@ -1,0 +1,196 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+@font-face {
+font-family: "Cinzel";
+src: url("../Fonts/Cinzel/static/Cinzel-Regular.ttf") format("truetype");
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: #2a2a2a;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 24px;
+padding: 20px;
+}
+
+.logo-dash {
+width: 140px;
+height: auto;
+display: block;
+}
+
+.login-brand {
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid #db1634;
+border-radius: 10px;
+padding: 14px 32px;
+background: rgba(0, 0, 0, 0.35);
+}
+
+.login-brand h1 {
+font-family: "Cinzel", serif;
+font-weight: 700;
+font-size: 30px;
+letter-spacing: 2px;
+color: #ffffff;
+text-transform: none;
+}
+
+.login-brand .brand-nails {
+font-weight: 400;
+}
+
+form {
+background: #ccc;
+padding: 35px 35px 40px;
+border-radius: 10px;
+width: 100%;
+max-width: 380px;
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+
+h2 {
+font-size: 22px;
+font-weight: 600;
+color: #222;
+text-align: center;
+margin-bottom: 4px;
+}
+
+label {
+font-size: 13px;
+font-weight: 600;
+color: #333;
+width: 100%;
+}
+
+input {
+width: 100%;
+padding: 10px 14px;
+border: 1px solid #888;
+border-radius: 6px;
+font-size: 14px;
+background: #f5f5f5;
+outline: none;
+}
+
+input:focus {
+border-color: #444;
+background: #fff;
+}
+
+button {
+width: 100%;
+background: #333;
+color: #fff;
+border: none;
+padding: 12px;
+border-radius: 6px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: background 0.2s;
+}
+
+button:hover {
+background: #555;
+}
+
+p {
+width: 100%;
+text-align: center;
+margin-top: 4px;
+}
+
+a {
+color: #444;
+font-size: 13px;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+/* ─── DATE HEADER ─── */
+.fecha-header {
+width: 100%;
+max-width: 500px;
+background: #ccc;
+padding: 12px 15px;
+border-radius: 10px 10px 0 0;
+font-size: 15px;
+font-weight: 600;
+color: #222;
+text-align: center;
+text-transform: capitalize;
+}
+
+/* ─── CALENDAR (FullCalendar v7) ─── */
+#calendar {
+width: 100%;
+max-width: 500px;
+background: #ccc;
+padding: 15px;
+border-radius: 0 0 10px 10px;
+font-size: 13px;
+}
+
+/* Override purple theme with grays via CSS custom properties */
+#calendar {
+--fc-monarch-primary: #555;
+--fc-monarch-primary-foreground: #fff;
+--fc-monarch-primary-over: #666;
+--fc-monarch-primary-down: #777;
+--fc-monarch-secondary: #ddd;
+--fc-monarch-secondary-foreground: #333;
+--fc-monarch-secondary-over: #ccc;
+--fc-monarch-secondary-down: #bbb;
+--fc-monarch-highlight: #9999994D;
+--fc-monarch-selected: #777;
+--fc-monarch-selected-foreground: #fff;
+--fc-monarch-selected-over: #888;
+--fc-monarch-selected-down: #999;
+--fc-monarch-background: #e0e0e0;
+--fc-monarch-faint: #8888881A;
+--fc-monarch-muted: #88888826;
+--fc-monarch-strong: #8888884D;
+--fc-monarch-stronger: #88888859;
+--fc-monarch-strongest: #88888866;
+--fc-monarch-foreground: #222;
+--fc-monarch-faint-foreground: #999;
+--fc-monarch-muted-foreground: #666;
+--fc-monarch-border: #888;
+--fc-monarch-strong-border: #555;
+}
+
+@media (max-width: 550px) {
+#calendar,
+.fecha-header {
+max-width: 100%;
+}
+
+#calendar {
+padding: 10px;
+font-size: 11px;
+border-radius: 0 0 10px 10px;
+}
+
+.fecha-header {
+padding: 10px;
+font-size: 14px;
+border-radius: 10px 10px 0 0;
+}
+}
