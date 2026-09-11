@@ -1,4 +1,4 @@
-# dark_nayls_backend
+# darky_nayls_backend
 Un único backend PHP + SQL que alimenta dos front: el **portal público de clientes** (beta_darky.php, que es una copia de darky_nails/index.html) y el dashboard del owner (beta_dashboard.php). 
 
 <h2>Módulos y qué problemas resuelven</h2>
