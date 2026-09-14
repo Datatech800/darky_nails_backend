@@ -1,5 +1,42 @@
-# darky_nayls_backend
-Un único backend PHP + SQL que alimenta dos front: el **portal público de clientes** (beta_darky.php, que es una copia de darky_nails/index.html) y el dashboard del owner (beta_dashboard.php). 
+# darky_nails_backend
+Un único backend PHP + SQL que alimenta dos front: el **portal público de clientes** (beta_darky.php) y el **dashboard del owner** (beta_dashboard.php).
+
+## Capturas
+
+<p align="center">
+  <img src="docs/screenshots/image_1.png" width="80%" alt="Login del owner">
+</p>
+<p align="center"><em>Login del owner</em></p>
+
+<p align="center">
+  <img src="docs/screenshots/image_2.png" width="80%" alt="Selección de turno desde la interfaz del usuario">
+</p>
+<p align="center"><em>Selección de turno desde la interfaz del usuario</em></p>
+
+<p align="center">
+  <img src="docs/screenshots/image_3.png" width="80%" alt="Confirmación del turno y elección de la variante del servicio">
+</p>
+<p align="center"><em>Confirmación del turno y elección de la variante del servicio</em></p>
+
+<p align="center">
+  <img src="docs/screenshots/image_4.png" width="80%" alt="Calendario de turnos del dashboard del owner">
+</p>
+<p align="center"><em>Calendario de turnos del dashboard del owner</em></p>
+
+<p align="center">
+  <img src="docs/screenshots/image_5.png" width="80%" alt="Interfaz de clientes del dashboard del owner">
+</p>
+<p align="center"><em>Interfaz de clientes del dashboard del owner</em></p>
+
+<p align="center">
+  <img src="docs/screenshots/image_6.png" width="80%" alt="Buscador y listado de clientes del dashboard del owner">
+</p>
+<p align="center"><em>Buscador y listado de clientes del dashboard del owner</em></p>
+
+<p align="center">
+  <img src="docs/screenshots/image_7.png" width="80%" alt="Interfaz de servicios y precios del dashboard del owner">
+</p>
+<p align="center"><em>Interfaz de servicios y precios del dashboard del owner</em></p>
 
 <h2>Módulos y qué problemas resuelven</h2>
 
